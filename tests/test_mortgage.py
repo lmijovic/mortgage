@@ -1,5 +1,5 @@
 import mortgage
 import decimal
 
-def test_dollar():
-    assert mortgage.dollar(12.3453) == decimal.Decimal('12.35')
+def test_pound():
+    assert mortgage.pound(1.314159) == decimal.Decimal('1.31')
