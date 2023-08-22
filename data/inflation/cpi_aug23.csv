@@ -6,7 +6,8 @@
 ## "Unit","%"
 ## "Release date","16-08-2023"
 ## "Next release","20 September 2023"
-## "Important notes",
+## "Important notes",the data was only year-month ;
+## ... day manually set to 15 (LM)
 "1989-01-15","4.9"
 "1989-02-15","5.0"
 "1989-03-15","5.0"
