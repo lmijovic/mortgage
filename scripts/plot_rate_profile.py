@@ -25,14 +25,14 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--infile', default="", help="date,value csv", dest="infile")
 parser.add_argument('--infile2', default="", help="[ optional, second date,value csv ]", dest="infile2")
 parser.add_argument('--infile3', default="", help="[ optional, third date,value csv ]", dest="infile3")
-parser.add_argument('--infile4', default="", help="[ optional, third date,value csv ]", dest="infile4")
+parser.add_argument('--infile4', default="", help="[ optional, fourth date,value csv ]", dest="infile4")
 parser.add_argument('--start', default=default_start, help="start date d-m-Y", dest="start")
 parser.add_argument('--end', default=default_end, help="end date d-m-Y", dest="end")
 # plot cosmetics:
 parser.add_argument('--label', default="data1", help="legend label", dest="label")
 parser.add_argument('--label2', default="data2", help="[ optional, second legend label ]", dest="label2")
 parser.add_argument('--label3', default="data3", help="[ optional, third legend label ]", dest="label3")
-parser.add_argument('--label4', default="data4", help="[ optional, third legend label ]", dest="label4")
+parser.add_argument('--label4', default="data4", help="[ optional, fourth legend label ]", dest="label4")
 
 args = parser.parse_args()
 
@@ -97,15 +97,18 @@ if (infile2 != ""):
 
 if (infile3 != ""):
     df = pd.read_csv(infile3,names=headers, comment='#')
+    print(df.head(10))
     df[date_col]= pd.to_datetime(df[date_col],format='mixed',dayfirst=True)
+    print(df.head(10))
     df = sort_and_filter(df,date_col,date_start,date_end)
-    df.plot(ax=ax, x=date_col,y=val_col,color='orange',label=label3)
+    print(df.head(100))
+    df.plot(ax=ax, x=date_col,y=val_col,color='red',label=label3)
 
 if (infile4 != ""):
     df = pd.read_csv(infile4,names=headers, comment='#')
     df[date_col]= pd.to_datetime(df[date_col],format='mixed',dayfirst=True)
     df = sort_and_filter(df,date_col,date_start,date_end)
-    df.plot(ax=ax, x=date_col,y=val_col,color='orange',label=label4) 
+    df.plot(ax=ax, x=date_col,y=val_col,color='violet',label=label4) 
 
 plt.xlim(date_start,date_end)
 plt.legend(frameon=False)
