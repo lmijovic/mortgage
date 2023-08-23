@@ -49,13 +49,14 @@ UK BoE interest rates \& inflation:
 cd scripts
 ln -s ../data/interest_rates/UK_BOE_interest_rate_Aug23.csv in1.csv
 ln -s ../data/inflation/cpi_aug23.csv in2.csv
-python plot_rate_profile.py --infile="in1.csv" --label="BoE interest" --infile2="in2.csv" --label2="CPI inflation" --start=01-01-1993
+python plot_rate_profile.py --infile="in1.csv" --label="BoE interest" --infile2="in2.csv" --label2="CPI inflation" --start=01-01-1993 --end=01-09-2023
 
 ```
 
 Produces this figure:
 
 ![Bank of England interest rate, UK consumer price index inflation](figures/uk_monetary.png)
+
 
 ### Data preprocessing
 
@@ -74,15 +75,11 @@ takes in.csv and writes out.csv
 
 * unit tests
 
-* scripts doc 
-
-* unclutter 
-
-* rename 
+* more flexible plotting options, though json configs 
 
 
 ## Resources
-* Office of national statistics  https://www.ons.gov.uk/economy/inflationandpriceindices , and specifically: https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/july2023 . They publish data under Open Government Licence 3.0 https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
-* Bank of England https://www.bankofengland.co.uk/boeapps/database
-* US interest and mortgage rates: https://fred.stlouisfed.org . 
+* Office of national statistics  https://www.ons.gov.uk/ . They publish data under Open Government Licence 3.0 https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/ . Some specific links: https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/july2023 ,  https://www.ons.gov.uk/search?q=mortgage .
+* Bank of England https://www.bankofengland.co.uk/boeapps/database  https://www.bankofengland.co.uk/statistics/visual-summaries/quoted-household-interest-rates. See BoE monthly minutes for rate predictions. 
+* US interest and mortgage rates: https://fred.stlouisfed.org 
 
