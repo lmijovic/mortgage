@@ -48,7 +48,7 @@ UK BoE interest rates \& inflation:
 ```
 cd scripts
 ln -s ../data/interest_rates/UK_BOE_interest_rate_Aug23.csv in1.csv
-ln -s ../data/inflation/cpi_aug23.csv in2.csv
+ln -s ../data/inflation/uk_cpi_aug23.csv in2.csv
 python plot_rate_profile.py --infile="in1.csv" --label="BoE interest" --infile2="in2.csv" --label2="CPI inflation" --start=01-01-1993 --end=01-09-2023
 
 ```
