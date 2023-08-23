@@ -1,4 +1,7 @@
-# Mortgage rate calculator and UK data analysis
+# Mortgage rate calculator and data analysis
+
+* Calculates mortgage payments
+* Analyses data on interest rates and inflation
 
 ## Install 
 
@@ -38,20 +41,34 @@ Produces this summary:
 
 ```
 
-### UK data analysis 
+### Data analysis 
 
-Data from Office of National Statistics: https://www.ons.gov.uk
+UK BoE interest rates \& inflation:
 
 ```
 cd scripts
-
-python plot_rate_profile.py --start=01-01-2000
+ln -s ../data/interest_rates/UK_BOE_interest_rate_Aug23.csv in1.csv
+ln -s ../data/inflation/cpi_aug23.csv in2.csv
+python plot_rate_profile.py --infile="in1.csv" --label="BoE interest" --infile2="in2.csv" --label2="CPI inflation" --start=01-01-1993
 
 ```
 
 Produces this figure:
 
 ![Bank of England interest rate, UK consumer price index inflation](figures/uk_monetary.png)
+
+### Data preprocessing
+
+Date,Value data is preprocessed into format "%d-%m-%y" 
+
+```
+cd scripts
+
+preprocess.py 
+
+```
+
+takes in.csv and writes out.csv 
 
 ## TODO
 
@@ -65,7 +82,7 @@ Produces this figure:
 
 
 ## Resources
-* Office of national statistics  https://www.ons.gov.uk/economy/inflationandpriceindices , and specifically: https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/july2023
-* Bank of England https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate
-
+* Office of national statistics  https://www.ons.gov.uk/economy/inflationandpriceindices , and specifically: https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/july2023 . They publish data under Open Government Licence 3.0 https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+* Bank of England https://www.bankofengland.co.uk/boeapps/database
+* US interest and mortgage rates: https://fred.stlouisfed.org . 
 
