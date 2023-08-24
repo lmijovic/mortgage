@@ -14,7 +14,9 @@ plt.rcParams.update({'font.size': 16})
 # horizontal and vertical grid lines
 hlines = (0,2,3,4,5,6,7,10)
 vlines = ("01-01-2000","01-01-2005","01-01-2010","01-01-2015","01-01-2020")
-copyright="https://www.bankofengland.co.uk & https://www.ons.gov.uk, (c) OGL3.0"
+copyright="Data source: https://www.ons.gov.uk, (c) OGL3.0"
+#copyright="https://www.bankofengland.co.uk & https://www.ons.gov.uk, (c) OGL3.0"
+#copyright+="\nhttps://fred.stlouisfed.org" 
 yaxis_label="Rate"
 
 date_format = '%d-%m-%Y'
@@ -71,7 +73,7 @@ df = pd.read_csv(infile,names=headers, comment='#')
 df[date_col]= pd.to_datetime(df[date_col],format='mixed',dayfirst=True)
 df = sort_and_filter(df,date_col,date_start,date_end)
 
-ax = df.plot(x=date_col,y=val_col,legend=True,label=label)
+ax = df.plot(x=date_col,y=val_col,color='blue',legend=True,label=label, figsize=(12.5, 5))
 
 
 # plot cosmetics
@@ -86,7 +88,7 @@ for line in vlines:
 
 plt.xlabel('',horizontalalignment='right', x=1.0)
 plt.ylabel(yaxis_label,horizontalalignment='right', y=1.0)
-plt.text( 1.01, -0.01, copyright, fontsize=7, color='gray',
+plt.text( 1.01, 0.0, copyright, fontsize=7, color='gray',
           verticalalignment="bottom",rotation="vertical", transform=plt.gca().transAxes)
 
 if (infile2 != ""):
@@ -94,21 +96,20 @@ if (infile2 != ""):
     df[date_col]= pd.to_datetime(df[date_col],format='mixed',dayfirst=True)
     df = sort_and_filter(df,date_col,date_start,date_end)
     df.plot(ax=ax, x=date_col,y=val_col,color='orange',label=label2) 
+    #df.plot(ax=ax, x=date_col,y=val_col,color='blue',style='--',label=label2) 
 
 if (infile3 != ""):
     df = pd.read_csv(infile3,names=headers, comment='#')
-    print(df.head(10))
     df[date_col]= pd.to_datetime(df[date_col],format='mixed',dayfirst=True)
-    print(df.head(10))
     df = sort_and_filter(df,date_col,date_start,date_end)
-    print(df.head(100))
     df.plot(ax=ax, x=date_col,y=val_col,color='red',label=label3)
 
 if (infile4 != ""):
     df = pd.read_csv(infile4,names=headers, comment='#')
     df[date_col]= pd.to_datetime(df[date_col],format='mixed',dayfirst=True)
     df = sort_and_filter(df,date_col,date_start,date_end)
-    df.plot(ax=ax, x=date_col,y=val_col,color='violet',label=label4) 
+    df.plot(ax=ax, x=date_col,y=val_col,color='purple',label=label4) 
+    #df.plot(ax=ax, x=date_col,y=val_col,color='red',style='--',label=label4) 
 
 plt.xlim(date_start,date_end)
 plt.legend(frameon=False)
