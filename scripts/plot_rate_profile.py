@@ -14,7 +14,8 @@ plt.rcParams.update({'font.size': 16})
 # horizontal and vertical grid lines
 hlines = (0,2,3,4,5,6,7,10)
 vlines = ("01-01-2000","01-01-2005","01-01-2010","01-01-2015","01-01-2020")
-copyright="Data source: https://www.ons.gov.uk, (c) OGL3.0"
+copyright="Data source: https://sdw.ecb.europa.eu"
+#copyright="Data source: https://www.ons.gov.uk, (c) OGL3.0"
 #copyright="https://www.bankofengland.co.uk & https://www.ons.gov.uk, (c) OGL3.0"
 #copyright+="\nhttps://fred.stlouisfed.org" 
 yaxis_label="Rate"
@@ -85,6 +86,14 @@ for line in vlines:
     if (line_date > date_start and line_date < date_end):
         ax.axvline(x=datetime.strptime(line,date_format),
                    color='lightgray',linestyle='--')
+
+
+# find mean
+mean=df[val_col].mean()
+print("mean value is", mean)
+ax.axhline(y=mean,color='orange',linestyle='--',label='euribor povprecje')
+ax.axhline(y=mean+2.0,color='red',linestyle='--',label='tvoj rate: povprecje+2%')
+ax.axhline(y=4.00,color='violet',label='fiksna')
 
 plt.xlabel('',horizontalalignment='right', x=1.0)
 plt.ylabel(yaxis_label,horizontalalignment='right', y=1.0)
